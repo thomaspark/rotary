@@ -1,0 +1,118 @@
+.rotary {
+  @color-main: #2c3e50;
+  @color-dial: #ecf0f1;
+  @color-guard: #95a5a6;
+  @start: -45deg;
+  @interval: 30;
+
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  background-color: @color-main;
+  border: 0.5em solid @color-main;
+  border-radius: 50%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: bold;
+  user-select: none;
+
+  .dial {
+    box-sizing: border-box;
+    position: absolute;
+    left: 2.5em;
+    top: 2.5em;
+    display: inline-block;
+    width: ~"calc(100% - 5em)";
+    height: ~"calc(100% - 5em)";
+    background-color: @color-dial;
+    border-radius: 50%;
+  }
+
+  .dial.smooth {
+    transition: all 1s ease;
+  }
+
+  .guard {
+    position: absolute;
+    left: ~"calc(50% - 0.5em)";
+    width: 1em;
+    height: 100%;
+    transform: rotate(115deg);
+  }
+
+  .guard:before {
+    content: "";
+    position: absolute;
+    top: 1em;
+    left: 0;
+    width: 1em;
+    height: 6em;
+    background-color: @color-guard;
+  }
+
+  .number {
+    position: absolute;
+    left: ~"calc(50% - 1em)";
+    display: inline-block;
+    width: 2em;
+    height: 100%;
+    text-align: center;
+  }
+
+  .number:before {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    line-height: 2em;
+    color: @color-dial;
+  }
+
+  .hole {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: @color-main;
+    color: #fff;
+  }
+
+  .number-loop(@i) when (@i <= 10) {
+    @content: mod(@i, 10);
+
+    .number:nth-child(@{i}) {
+      transform: rotate(-1 * (@start + (@i - 1)*@interval));
+    }
+
+    .number:nth-child(@{i}):before {
+      content: "@{content}";
+      transform: rotate(@start + (@i - 1)*@interval);
+    }
+
+    .number-loop(@i + 1)
+  }
+
+  .number-loop(1);
+
+  .hole-wrapper {
+    position: absolute;
+    left: ~"calc(50% - 1em)";
+    top: 0.5em;
+    width: 2em;
+    height: ~"calc(50% - 0.5em)";
+    transform-origin: 50% 100%;
+    cursor: pointer;
+  }
+
+  .hole-wrapper-loop(@i) when (@i <= 10) {
+
+    .hole-wrapper:nth-child(@{i}) {
+      transform: rotate(-1 * (@start + (@i - 1)*@interval));
+    }
+
+    .hole-wrapper-loop(@i + 1)
+  }
+
+  .hole-wrapper-loop(1);
+}

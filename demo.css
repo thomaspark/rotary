@@ -1,0 +1,27 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  flex-pack: center;
+  justify-content: center;
+  flex-align: center;
+  align-items: center;
+  background-color: #3A5473;
+}
+
+.input-wrapper {
+  text-align: center;
+}
+
+input[type="text"] {
+  display: block;
+  margin-top: 2em;
+  padding: 0.5em 1em;
+  font-size: 24px;
+  text-align: center;
+}
