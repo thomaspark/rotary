@@ -85,7 +85,7 @@
     else if (deg < base + 8*interval) {num = 8;}
     else if (deg < base + 9*interval) {num = 9;}
 
-    input.val("" + input.val() + num);
+    input.val("" + input.val() + num).change();
   };
 
   var init = function() {
@@ -118,6 +118,16 @@
           dial.addClass('smooth').attr('style', '');
           populateInput(input, dial);
         });
+      });
+
+      input.on('change', function() {
+        var number = input.val();
+
+        if (number.length === 0) {
+          $('#call').removeAttr("href");
+        } else {
+          $('#call').attr("href", "tel:" + number);
+        }
       });
     });
   };
