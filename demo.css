@@ -14,10 +14,6 @@ body {
   background-color: #3A5473;
 }
 
-.input-wrapper {
-  text-align: center;
-}
-
 input[type="text"] {
   display: inline-block;
   margin-top: 2em;
