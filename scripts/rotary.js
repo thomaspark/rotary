@@ -1,31 +1,3 @@
-var html = '<div class="rotary"> \
-              <div class="numbers"> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-                <div class="number"></div> \
-              </div> \
-              <div class="dial"> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-                <div class="hole-wrapper"><div class="hole"></div></div> \
-              </div> \
-              <div class="guard"></div> \
-            </div>';
-
 var rotateDial = function(rotary, event, hole) {
   var rotation = getRotationDegrees(hole.parent());
   var offset = (55 - getRotationDegrees(hole.parent()) + 360) % 360;
@@ -95,12 +67,12 @@ var populateInput = function(input, dial) {
 };
 
 var init = function() {
+  $('.controls').show();
+  $('body').removeClass('nojs');
+
   $('[data-rotary]').each(function() {
     var input = $(this);
     var parent = $(input.attr('data-rotary'));
-
-    parent.html(html);
-
     var rotary = parent.find(".rotary");
 
     rotary.on('mousedown touchstart', '.hole', function(e) {

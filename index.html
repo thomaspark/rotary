@@ -9,10 +9,38 @@
     <script src="scripts/zepto.custom.min.js"></script>
     <script src="scripts/rotary.min.js"></script>
   </head>
-  <body>
-    <div id="demo"></div>
-    <div>
-      <input type="text" id="input" data-rotary="#demo"><a id="call">✆</a>
+  <body class="nojs">
+    <div id="demo">
+      <div class="rotary">
+        <div class="numbers">
+          <div class="number"></div>
+          <div class="number"></div>
+          <div class="number"></div>
+          <div class="number"></div>
+          <div class="number"></div>
+          <div class="number"></div>
+          <div class="number"></div>
+          <div class="number"></div>
+          <div class="number"></div>
+          <div class="number"></div>
+        </div>
+        <div class="dial">
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+          <div class="hole-wrapper"><div class="hole"></div></div>
+        </div>
+        <div class="guard"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <input type="tel" id="input" data-rotary="#demo"><a id="call">✆</a>
     </div>
   </body>
 </html>
