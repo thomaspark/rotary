@@ -728,16 +728,16 @@ var Zepto = (function() {
         className(this, classList.trim())
       })
     },
-    toggleClass: function(name, when){
-      if (!name) return this
-      return this.each(function(idx){
-        var $this = $(this), names = funcArg(this, name, idx, className(this))
-        names.split(/\s+/g).forEach(function(klass){
-          (when === undefined ? !$this.hasClass(klass) : when) ?
-            $this.addClass(klass) : $this.removeClass(klass)
-        })
-      })
-    },
+    // toggleClass: function(name, when){
+    //   if (!name) return this
+    //   return this.each(function(idx){
+    //     var $this = $(this), names = funcArg(this, name, idx, className(this))
+    //     names.split(/\s+/g).forEach(function(klass){
+    //       (when === undefined ? !$this.hasClass(klass) : when) ?
+    //         $this.addClass(klass) : $this.removeClass(klass)
+    //     })
+    //   })
+    // },
     position: function() {
       if (!this.length) return
 
@@ -794,72 +794,72 @@ var Zepto = (function() {
     }
   })
 
-  function traverseNode(node, fun) {
-    fun(node)
-    for (var i = 0, len = node.childNodes.length; i < len; i++)
-      traverseNode(node.childNodes[i], fun)
-  }
+  // function traverseNode(node, fun) {
+  //   fun(node)
+  //   for (var i = 0, len = node.childNodes.length; i < len; i++)
+  //     traverseNode(node.childNodes[i], fun)
+  // }
 
-  // Generate the `after`, `prepend`, `before`, `append`,
-  // `insertAfter`, `insertBefore`, `appendTo`, and `prependTo` methods.
-  adjacencyOperators.forEach(function(operator, operatorIndex) {
-    var inside = operatorIndex % 2 //=> prepend, append
+  // // Generate the `after`, `prepend`, `before`, `append`,
+  // // `insertAfter`, `insertBefore`, `appendTo`, and `prependTo` methods.
+  // adjacencyOperators.forEach(function(operator, operatorIndex) {
+  //   var inside = operatorIndex % 2 //=> prepend, append
 
-    $.fn[operator] = function(){
-      // arguments can be nodes, arrays of nodes, Zepto objects and HTML strings
-      var argType, nodes = $.map(arguments, function(arg) {
-            var arr = []
-            argType = type(arg)
-            if (argType == "array") {
-              arg.forEach(function(el) {
-                if (el.nodeType !== undefined) return arr.push(el)
-                else if ($.zepto.isZ(el)) return arr = arr.concat(el.get())
-                arr = arr.concat(zepto.fragment(el))
-              })
-              return arr
-            }
-            return argType == "object" || arg == null ?
-              arg : zepto.fragment(arg)
-          }),
-          parent, copyByClone = this.length > 1
-      if (nodes.length < 1) return this
+  //   $.fn[operator] = function(){
+  //     // arguments can be nodes, arrays of nodes, Zepto objects and HTML strings
+  //     var argType, nodes = $.map(arguments, function(arg) {
+  //           var arr = []
+  //           argType = type(arg)
+  //           if (argType == "array") {
+  //             arg.forEach(function(el) {
+  //               if (el.nodeType !== undefined) return arr.push(el)
+  //               else if ($.zepto.isZ(el)) return arr = arr.concat(el.get())
+  //               arr = arr.concat(zepto.fragment(el))
+  //             })
+  //             return arr
+  //           }
+  //           return argType == "object" || arg == null ?
+  //             arg : zepto.fragment(arg)
+  //         }),
+  //         parent, copyByClone = this.length > 1
+  //     if (nodes.length < 1) return this
 
-      return this.each(function(_, target){
-        parent = inside ? target : target.parentNode
+  //     return this.each(function(_, target){
+  //       parent = inside ? target : target.parentNode
 
-        // convert all methods to a "before" operation
-        target = operatorIndex == 0 ? target.nextSibling :
-                 operatorIndex == 1 ? target.firstChild :
-                 operatorIndex == 2 ? target :
-                 null
+  //       // convert all methods to a "before" operation
+  //       target = operatorIndex == 0 ? target.nextSibling :
+  //                operatorIndex == 1 ? target.firstChild :
+  //                operatorIndex == 2 ? target :
+  //                null
 
-        var parentInDocument = $.contains(document.documentElement, parent)
+  //       var parentInDocument = $.contains(document.documentElement, parent)
 
-        nodes.forEach(function(node){
-          if (copyByClone) node = node.cloneNode(true)
-          else if (!parent) return $(node).remove()
+  //       nodes.forEach(function(node){
+  //         if (copyByClone) node = node.cloneNode(true)
+  //         else if (!parent) return $(node).remove()
 
-          parent.insertBefore(node, target)
-          if (parentInDocument) traverseNode(node, function(el){
-            if (el.nodeName != null && el.nodeName.toUpperCase() === 'SCRIPT' &&
-               (!el.type || el.type === 'text/javascript') && !el.src){
-              var target = el.ownerDocument ? el.ownerDocument.defaultView : window
-              target['eval'].call(target, el.innerHTML)
-            }
-          })
-        })
-      })
-    }
+  //         parent.insertBefore(node, target)
+  //         if (parentInDocument) traverseNode(node, function(el){
+  //           if (el.nodeName != null && el.nodeName.toUpperCase() === 'SCRIPT' &&
+  //              (!el.type || el.type === 'text/javascript') && !el.src){
+  //             var target = el.ownerDocument ? el.ownerDocument.defaultView : window
+  //             target['eval'].call(target, el.innerHTML)
+  //           }
+  //         })
+  //       })
+  //     })
+  //   }
 
-    // after    => insertAfter
-    // prepend  => prependTo
-    // before   => insertBefore
-    // append   => appendTo
-    $.fn[inside ? operator+'To' : 'insert'+(operatorIndex ? 'Before' : 'After')] = function(html){
-      $(html)[operator](this)
-      return this
-    }
-  })
+  //   // after    => insertAfter
+  //   // prepend  => prependTo
+  //   // before   => insertBefore
+  //   // append   => appendTo
+  //   $.fn[inside ? operator+'To' : 'insert'+(operatorIndex ? 'Before' : 'After')] = function(html){
+  //     $(html)[operator](this)
+  //     return this
+  //   }
+  // })
 
   zepto.Z.prototype = Z.prototype = $.fn
 
