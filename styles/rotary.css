@@ -1,0 +1,176 @@
+.rotary {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  background-color: #2c3e50;
+  border: 0.5em solid #2c3e50;
+  border-radius: 50%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: bold;
+  user-select: none;
+}
+.rotary .dial {
+  box-sizing: border-box;
+  position: absolute;
+  left: 2.5em;
+  top: 2.5em;
+  display: inline-block;
+  width: calc(100% - 5em);
+  height: calc(100% - 5em);
+  background-color: #ecf0f1;
+  border-radius: 50%;
+}
+.rotary .dial.smooth {
+  transition: all 1s ease;
+}
+.rotary .guard {
+  position: absolute;
+  left: calc(50% - 0.5em);
+  width: 1em;
+  height: 100%;
+  transform: rotate(115deg);
+}
+.rotary .guard:before {
+  content: "";
+  position: absolute;
+  top: 1em;
+  left: 0;
+  width: 1em;
+  height: 6em;
+  background-color: #95a5a6;
+}
+.rotary .number {
+  position: absolute;
+  left: calc(50% - 1em);
+  display: inline-block;
+  width: 2em;
+  height: 100%;
+  text-align: center;
+}
+.rotary .number:before {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  line-height: 2em;
+  color: #ecf0f1;
+}
+.rotary .hole {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-color: #2c3e50;
+  color: #fff;
+}
+.rotary .number:nth-child(1) {
+  transform: rotate(45deg);
+}
+.rotary .number:nth-child(1):before {
+  content: "1";
+  transform: rotate(-45deg);
+}
+.rotary .number:nth-child(2) {
+  transform: rotate(15deg);
+}
+.rotary .number:nth-child(2):before {
+  content: "2";
+  transform: rotate(-15deg);
+}
+.rotary .number:nth-child(3) {
+  transform: rotate(-15deg);
+}
+.rotary .number:nth-child(3):before {
+  content: "3";
+  transform: rotate(15deg);
+}
+.rotary .number:nth-child(4) {
+  transform: rotate(-45deg);
+}
+.rotary .number:nth-child(4):before {
+  content: "4";
+  transform: rotate(45deg);
+}
+.rotary .number:nth-child(5) {
+  transform: rotate(-75deg);
+}
+.rotary .number:nth-child(5):before {
+  content: "5";
+  transform: rotate(75deg);
+}
+.rotary .number:nth-child(6) {
+  transform: rotate(-105deg);
+}
+.rotary .number:nth-child(6):before {
+  content: "6";
+  transform: rotate(105deg);
+}
+.rotary .number:nth-child(7) {
+  transform: rotate(-135deg);
+}
+.rotary .number:nth-child(7):before {
+  content: "7";
+  transform: rotate(135deg);
+}
+.rotary .number:nth-child(8) {
+  transform: rotate(-165deg);
+}
+.rotary .number:nth-child(8):before {
+  content: "8";
+  transform: rotate(165deg);
+}
+.rotary .number:nth-child(9) {
+  transform: rotate(-195deg);
+}
+.rotary .number:nth-child(9):before {
+  content: "9";
+  transform: rotate(195deg);
+}
+.rotary .number:nth-child(10) {
+  transform: rotate(-225deg);
+}
+.rotary .number:nth-child(10):before {
+  content: "0";
+  transform: rotate(225deg);
+}
+.rotary .hole-wrapper {
+  position: absolute;
+  left: calc(50% - 1em);
+  top: 0.5em;
+  width: 2em;
+  height: calc(50% - 0.5em);
+  transform-origin: 50% 100%;
+  cursor: pointer;
+}
+.rotary .hole-wrapper:nth-child(1) {
+  transform: rotate(45deg);
+}
+.rotary .hole-wrapper:nth-child(2) {
+  transform: rotate(15deg);
+}
+.rotary .hole-wrapper:nth-child(3) {
+  transform: rotate(-15deg);
+}
+.rotary .hole-wrapper:nth-child(4) {
+  transform: rotate(-45deg);
+}
+.rotary .hole-wrapper:nth-child(5) {
+  transform: rotate(-75deg);
+}
+.rotary .hole-wrapper:nth-child(6) {
+  transform: rotate(-105deg);
+}
+.rotary .hole-wrapper:nth-child(7) {
+  transform: rotate(-135deg);
+}
+.rotary .hole-wrapper:nth-child(8) {
+  transform: rotate(-165deg);
+}
+.rotary .hole-wrapper:nth-child(9) {
+  transform: rotate(-195deg);
+}
+.rotary .hole-wrapper:nth-child(10) {
+  transform: rotate(-225deg);
+}
