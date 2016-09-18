@@ -46,7 +46,7 @@ var getRotationDegrees = function(obj) {
   return (angle < 0) ? angle + 360 : angle;
 };
 
-var populateInput = function(input, dial) {
+var calculateNum = function(input, dial) {
   var base = 40;
   var interval = 30;
   var deg = getRotationDegrees(dial);
@@ -63,7 +63,7 @@ var populateInput = function(input, dial) {
   else if (deg < base + 8*interval) {num = 8;}
   else if (deg < base + 9*interval) {num = 9;}
 
-  input.val("" + input.val() + num).change();
+  return num;
 };
 
 var init = function() {
@@ -92,9 +92,15 @@ var init = function() {
       });
 
       $(document).one('mouseup touchend', function() {
+        var num = calculateNum(input, dial);
         $('body').off('mousemove touchmove');
         dial.addClass('smooth').attr('style', '');
-        populateInput(input, dial);
+        dial.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+          if (typeof num !== 'undefined') {
+            input.val("" + input.val() + num).change();
+          }
+        });
+
       });
     });
 
