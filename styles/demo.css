@@ -17,20 +17,19 @@ body {
 input {
   display: inline-block;
   width: 6em;
-  margin-top: 2em;
-  padding: 0.5em 1em;
   border: none;
   font-size: 24px;
   text-align: center;
 }
 
 .controls {
-  display: none;
+  display: flex;
+  margin-top: 2rem;
 }
 
 #call {
   box-sizing: border-box;
-  display: inline-block;
+  display: flex;
   height: 53px;
   padding: 0 0.4em;
   vertical-align: bottom;
